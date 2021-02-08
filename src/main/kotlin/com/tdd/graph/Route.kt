@@ -1,3 +1,3 @@
 package com.tdd.graph
 
-class Route(val distance: Int)
+class Route(val start: String, val end: String, val distance: Int)

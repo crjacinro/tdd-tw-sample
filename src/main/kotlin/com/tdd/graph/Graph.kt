@@ -5,12 +5,16 @@ class Graph(routeList: String) {
 
     init {
         routeList.split(",").forEach {
-            routes.add(Route(it.substring(2).toInt()))
+            val start = it.substring(0, 1)
+            val end = it.substring(1, 2)
+            val distance = it.substring(2).toInt()
+
+            routes.add(Route(start, end, distance))
         }
     }
 
-    fun getShortestRoute(): Int {
-        return routes.first().distance
+    fun getShortestRoute(start: String, end: String): Int {
+        return routes.firstOrNull { it.start == start && it.end == end }?.distance ?: -1
     }
 }
 

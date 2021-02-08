@@ -9,7 +9,7 @@ class GraphTest {
         val routeList = "AB5"
         val graph = Graph(routeList)
 
-        val shortestDistance = graph.getShortestRoute()
+        val shortestDistance = graph.getShortestRoute("A", "B")
 
         assertEquals(5, shortestDistance)
     }
@@ -19,7 +19,7 @@ class GraphTest {
         val routeList = "AB5,AC3"
         val graph = Graph(routeList)
 
-        val shortestDistance = graph.getShortestRoute()
+        val shortestDistance = graph.getShortestRoute("A", "B")
 
         assertEquals(5, shortestDistance)
     }
