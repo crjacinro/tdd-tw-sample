@@ -1,7 +1,17 @@
 package com.tdd.graph
 
 class Graph(routeList: String) {
-    fun getShortestRoute(s: String, s1: String): Int {
-        return 5
+    private var routes = mutableListOf<Route>()
+
+    init {
+        routeList.split(",").forEach {
+            routes.add(Route(it.substring(2).toInt()))
+        }
+    }
+
+    fun getShortestRoute(): Int {
+        return routes.first().distance
     }
 }
+
+
