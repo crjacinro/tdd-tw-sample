@@ -5,22 +5,13 @@ import kotlin.test.assertEquals
 
 class GraphTest {
     @Test
-    fun `Graph should give the shortest route when the input has direct route`() {
-        val routeList = "AB5"
-        val graph = Graph(routeList)
-
-        val shortestDistance = graph.getShortestRoute("A", "B")
-
+    fun `Graph should give the shortest route when the input has single and direct route`() {
+        var graph = Graph("AB5,AC3")
+        var shortestDistance = graph.getShortestRoute("A", "B")
         assertEquals(5, shortestDistance)
-    }
 
-    @Test
-    fun `Graph should give the shortest route when the input has direct and indirect route`() {
-        val routeList = "AB5,AC3"
-        val graph = Graph(routeList)
-
-        val shortestDistance = graph.getShortestRoute("A", "B")
-
+        graph = Graph("AB5")
+        shortestDistance = graph.getShortestRoute("A", "B")
         assertEquals(5, shortestDistance)
     }
 }
