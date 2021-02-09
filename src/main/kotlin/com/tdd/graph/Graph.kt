@@ -29,6 +29,14 @@ class Graph(routeList: String) {
                     if (secondRoute.start == firstRoute.end && secondRoute.end == end) {
                         return Route(start, end, firstRoute.distance + secondRoute.distance)
                     }
+
+                    if (secondRoute.start == firstRoute.end) {
+                        routes.forEach { thirdRoute ->
+                            if (thirdRoute.start == secondRoute.end && thirdRoute.end == end) {
+                                return Route(start, end, firstRoute.distance + secondRoute.distance + thirdRoute.distance)
+                            }
+                        }
+                    }
                 }
             }
         }
