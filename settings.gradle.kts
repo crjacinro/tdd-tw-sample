@@ -1,3 +1,3 @@
 
-rootProject.name = "TDDSample"
+rootProject.name = "TDD-Thoughtworks-Sample"
 
