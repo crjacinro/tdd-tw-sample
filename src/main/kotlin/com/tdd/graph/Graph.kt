@@ -19,16 +19,14 @@ class Graph(routeList: String) {
     }
 
     private fun lookForRoute(start: String, end: String): Route? {
-        routes.forEach { route ->
-            if (route.start == start && route.end == end) {
-                return route
+        routes.filter { it.start == start }.forEach {
+            if (it.end == end) {
+                return it
             }
 
-            if (route.start == start) {
-                val downStreamRoute = lookForRoute(route.end, end)
-                downStreamRoute?.let {
-                    return Route(start, end, route.distance + it.distance)
-                }
+            val downStreamRoute = lookForRoute(it.end, end)
+            downStreamRoute?.let { downRoute ->
+                return Route(start, end, it.distance + downRoute.distance)
             }
         }
 
