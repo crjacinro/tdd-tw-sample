@@ -31,5 +31,13 @@ class GraphTest {
         var graph = Graph("AC3,CB4,AB5")
         var shortestDistance = graph.getShortestRoute("A", "B")
         assertEquals(5, shortestDistance)
+
+        graph = Graph("AB5,AB4,AB3")
+        shortestDistance = graph.getShortestRoute("A", "B")
+        assertEquals(3, shortestDistance)
+
+        graph = Graph("AC3,CB4,AD2,DB2")
+        shortestDistance = graph.getShortestRoute("A", "B")
+        assertEquals(4, shortestDistance)
     }
 }
