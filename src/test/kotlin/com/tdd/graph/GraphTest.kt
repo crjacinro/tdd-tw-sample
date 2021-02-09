@@ -17,13 +17,19 @@ class GraphTest {
 
     @Test
     fun `Graph should give the shortest route when the input has a route in between`() {
-        var routeList = "AC3,CB4"
-        var graph = Graph(routeList)
+        var graph = Graph("AC3,CB4")
         var shortestDistance = graph.getShortestRoute("A", "B")
         assertEquals(7, shortestDistance)
 
         graph = Graph("AC3,CD4,DB5")
         shortestDistance = graph.getShortestRoute("A", "B")
         assertEquals(12, shortestDistance)
+    }
+
+    @Test
+    fun `Graph should give the shortest route when the input has multiple routes`() {
+        var graph = Graph("AC3,CB4,AB5")
+        var shortestDistance = graph.getShortestRoute("A", "B")
+        assertEquals(5, shortestDistance)
     }
 }
