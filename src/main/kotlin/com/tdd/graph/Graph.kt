@@ -14,7 +14,26 @@ class Graph(routeList: String) {
     }
 
     fun getShortestRoute(start: String, end: String): Int {
-        return routes.firstOrNull { it.start == start && it.end == end }?.distance ?: -1
+        val route = lookForRoute(start, end)
+        return route?.distance ?: -1
+    }
+
+    private fun lookForRoute(start: String, end: String): Route? {
+        routes.forEach { firstRoute ->
+            if (firstRoute.start == start && firstRoute.end == end) {
+                return firstRoute
+            }
+
+            if (firstRoute.start == start) {
+                routes.forEach { secondRoute ->
+                    if (secondRoute.start == firstRoute.end && secondRoute.end == end) {
+                        return Route(start, end, firstRoute.distance + secondRoute.distance)
+                    }
+                }
+            }
+        }
+
+        return null
     }
 }
 

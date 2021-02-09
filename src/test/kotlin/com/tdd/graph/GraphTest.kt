@@ -14,4 +14,14 @@ class GraphTest {
         shortestDistance = graph.getShortestRoute("A", "B")
         assertEquals(5, shortestDistance)
     }
+
+    @Test
+    fun `Graph should give the shortest route when the input has a route in between`() {
+        val routeList = "AC3,CB4"
+        val graph = Graph(routeList)
+
+        val shortestDistance = graph.getShortestRoute("A", "B")
+
+        assertEquals(7, shortestDistance)
+    }
 }
